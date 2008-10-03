@@ -1,0 +1,89 @@
+<html><head><title>The Chainsaw Infanticide Logger Manuever</title>
+<script language="javascript">
+<!--
+  function chk() {
+    var name = navigator.appName;
+    var ver = navigator.appVersion;
+    if (name.charAt(0) == "M") {
+      if (ver.charAt(0) >= 5 ||
+        ver.indexOf(" 5.5") >= 0 ||
+        ver.indexOf(" 6") >= 0
+         )
+        return(true);
+      return(false);
+    } else if (name.charAt(0) == "N") {
+      if (ver.charAt(0) >= 5)
+        return(true);
+      return(false);
+    } else {
+      return(false);
+    }
+  }
+
+  function hilight(x) {
+    if (!chk()) return;
+    if (parent) {
+      try {
+        parent.frames[0].hilight(x);
+      } catch(e) {
+       //alert(e);
+      }
+    }
+  }
+
+  //Navigation Bar
+  var IE = document.all;
+  var PosTimer;
+  function stickNavi() {
+    var y = document.body.scrollTop;
+    var s = document.getElementById('navi').style
+    s.top = y + 7;
+    s.left = 8;
+  }
+  function stickNaviLoop() {
+    if (PosTimer){clearTimeout(PosTimer);}
+    stickNavi();
+    PosTimer = setTimeout("stickNaviLoop()", 10);
+  }
+
+  function setNavi() {
+    if (IE) {document.body.onscroll = stickNavi;}
+    else {stickNaviLoop();}
+  }
+
+//-->
+</script>
+<link rel="stylesheet" href="chainsaw_infanticde_files/blade-old.css" type="text/css" title="blade"></head><body onload="setNavi()">
+<a name="head"></a><div id="navi" style="position: absolute; top: 7px; left: 8px;"><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/153379" class="a-button" onclick="hilight(153379)"><span id="normal" title="&lt;">&nbsp;&lt;&nbsp;</span></a><a href="http://blade.nagaokaut.ac.jp/ruby/ruby-talk/153201-153400.shtml#153380" class="a-button" target="_top"><span id="normal" title="^">^</span></a><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/153381" class="a-button" onclick="hilight(153381)"><span id="normal" title="&gt;">&nbsp;&gt;&nbsp;</span></a> <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/153493" onclick="hilight(153493)" class="a-button"><span id="red" title="[previous]">&nbsp;P&nbsp;</span></a><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/153383" onclick="hilight(153383)" class="a-button"><span id="green" title="[next]">&nbsp;N&nbsp;</span></a> <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/153378" onclick="hilight(153378)" class="a-button"><span id="red" title="[previous thread]">|&lt;</span></a><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/153384" onclick="hilight(153384)" class="a-button"><span id="red" title="[next thread]">&gt;|</span></a><span id="normal" title="[parent]">^</span><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/153383" onclick="hilight(153383)" class="a-button"><span id="normal" title="[child]">_</span></a><span id="normal" title="[elder]">&gt;</span><span id="normal" title="[younger]">&lt;</span> <a href="http://blade.nagaokaut.ac.jp/cgi-bin/vframe.rb/ruby/ruby-talk/153380?153296-154102" target="_top" class="a-button"><span id="normal" title="[thread frame]">---</span></a><a href="http://blade.nagaokaut.ac.jp/cgi-bin/vframe.rb/ruby/ruby-talk/153380?153296-154102+split-mode-vertical" target="_top" class="a-button"><span id="normal" title="[thread frame vertical]">&nbsp;|&nbsp;</span></a><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/153380" target="_top" onclick="hilight(153380)" class="a-button"><span id="normal" title="[frame close]">&nbsp;~&nbsp;</span></a><a href="http://blade.nagaokaut.ac.jp/ruby/ruby-talk/index.shtml" target="_top" class="a-button"><span id="normal" title="[index]">.</span></a><a href="http://blade.nagaokaut.ac.jp/ruby/index.shtml" target="_top" class="a-button"><span id="normal" title="[iindex]">..</span></a><a href="http://www.excite.co.jp/world/url/?wb_url=http://blade.nagaokaut.ac.jp/cgi-bin/rcat.rb/ruby/ruby-talk/153380&amp;wb_lp=enja" class="\&quot;a-button\&quot;" target="Excite"><span id="normal" title="[Japanese]">J</span></a><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/153380?help-en" class="a-button"><span id="normal" title="[Help]">Help</span></a></div>
+<div id="header"><br>
+Subject: <strong></strong><strong>The Chainsaw Infanticide Logger Manuever</strong><br>
+From: "<strong>Zed A. Shaw</strong>" &lt;zedshaw zedshaw.com&gt;<br>
+Date: Wed, 24 Aug 2005 13:06:08 +0900</div>
+<pre>One of the things that's really great about agile languages is they give you the power to do anything.  One of the most horrible things about agile languages is they give every other idiot the same power to stab you in the back with a rusty pitchfork.
+
+I needed to do some simple logging.  I made a Logger class and started writing to it.  Hmm, my log messages sometimes have a format and sometimes they don't.  Nothing I do fixes this.
+
+Three hours later and half my sanity, I start to snoop through the libraries I've included, and I find this wonderfully horrible gem:
+
+<a href="http://rafb.net/paste/results/0vADxJ56.html" target="_top">http://rafb.net/paste/results/0vADxJ56.html</a>
+
+Not only does this code re-open a class to do something that could *just as easily be done with subclassing*, but the author also TURNS OFF DOCUMENTATION with :nodoc: so that nobody knows about it.  Great!  So much for Principle Of Least Surprise.  This is more like Principle Of Most Heinous Arsenic Injection.
+
+I then trolled through a few more projects and found that this is common practice.  The glue project does it.  Glue even goes so far as to re-open the Logger class *just so it can turn it into a singleton*.  Great Buddha the insanity is everywhere!
+
+<a href="http://rafb.net/paste/results/yXNJvv50.html" target="_top">http://rafb.net/paste/results/yXNJvv50.html</a>
+
+What's wrong with you people?  This is the absolute worst thing I've ever experienced in any language I've used.  I thought having magic AspectJ crap silently move my code was bad.  At least that stuff was documented and I could optionally turn it off.  This can only be fixed with leprechaun backflips into a pool of jello while covered in chocolate.  Translation: it can't be fixed easily and I shouldn't have to "fix" it since I didn't break it.
+
+-- Please, think of the children before you re-open their parent with a damn chainsaw. --
+
+I only re-open a class after I've tried every other option like subclassing, wrapping, etc.  If nothing else works or is too much effort for the modification, then I DOCUMENT THE HELL out of my modification and try desperately to localize the change so that it doesn't hurt anyone else.
+
+Alright, rant off.  Please stop doing this.  My appologies if I hurt anyone's feelings.
+
+Zed A. Shaw
+<a href="http://www.zedshaw.com/" target="_top">http://www.zedshaw.com/</a>
+
+<a name="tail"></a></pre>
+
+</body></html>

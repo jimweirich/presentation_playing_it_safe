@@ -1,0 +1,49 @@
+#green, #red, #yellow, #normal, #fade { 
+  font-family: monospace;
+  padding: 1px;
+  margin: 1px;
+  white-space: pre;
+  border-width: thin;
+  border-style: outset;
+}
+
+#green{
+  border-color: palegreen;
+  background-color: palegreen;
+}
+
+#red{
+  border-color: lightpink;
+  background-color: lightpink;
+}
+
+#yellow{
+  border-color: lightyellow;
+  background-color: lightyellow;
+}
+
+#normal{
+  border-color: #ffffff;
+  background-color: #ffffff;
+}
+
+#fade{
+  border-color: #999999;
+  background-color: #999999;
+}
+
+pre{
+/*  height: 75%;
+  overflow: auto;*/
+  background-color: #ffffff;
+}
+
+/*
+body{
+  background-color: #eeeeee;
+}
+*/
+
+#header{
+  background-color: #eeeeee;
+}

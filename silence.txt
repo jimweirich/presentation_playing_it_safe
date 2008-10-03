@@ -1,0 +1,28 @@
+Subject: Re: The Chainsaw Infanticide Logger Manuever
+From: Eric Hodel <drbrain segment7.net>
+Date: Wed, 24 Aug 2005 16:12:20 +0900
+References: 153380
+In-reply-to: 153380
+
+Oh? You think that's bad?
+
+There's also this gem sitting right next to it.
+
+def silence_warnings
+   old_verbose, $VERBOSE = $VERBOSE, nil
+   begin
+     yield
+   ensure
+     $VERBOSE = old_verbose
+   end
+end
+
+So that things like this can be done:
+
+silence_warnings { Customer = Struct.new("Customer", :name) }
+
+instead of doing something simple like:
+
+unless defined? Customer
+   Customer = Struct.new "Customer", :name
+end

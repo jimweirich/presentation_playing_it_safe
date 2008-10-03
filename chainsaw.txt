@@ -1,0 +1,52 @@
+Subject: The Chainsaw Infanticide Logger Manuever
+From: "Zed A. Shaw" <zedshaw zedshaw.com>
+Date: Wed, 24 Aug 2005 13:06:08 +0900
+
+One of the things that's really great about agile languages is they
+give you the power to do anything.  One of the most horrible things
+about agile languages is they give every other idiot the same power to
+stab you in the back with a rusty pitchfork.
+
+I needed to do some simple logging.  I made a Logger class and started
+writing to it.  Hmm, my log messages sometimes have a format and
+sometimes they don't.  Nothing I do fixes this.
+
+Three hours later and half my sanity, I start to snoop through the
+libraries I've included, and I find this wonderfully horrible gem:
+
+http://rafb.net/paste/results/0vADxJ56.html
+
+Not only does this code re-open a class to do something that could
+*just as easily be done with subclassing*, but the author also TURNS
+OFF DOCUMENTATION with :nodoc: so that nobody knows about it.  Great!
+So much for Principle Of Least Surprise.  This is more like Principle
+Of Most Heinous Arsenic Injection.
+
+I then trolled through a few more projects and found that this is
+common practice.  The glue project does it.  Glue even goes so far as
+to re-open the Logger class *just so it can turn it into a singleton*.
+Great Buddha the insanity is everywhere!
+
+http://rafb.net/paste/results/yXNJvv50.html
+
+What's wrong with you people?  This is the absolute worst thing I've
+ever experienced in any language I've used.  I thought having magic
+AspectJ crap silently move my code was bad.  At least that stuff was
+documented and I could optionally turn it off.  This can only be fixed
+with leprechaun backflips into a pool of jello while covered in
+chocolate.  Translation: it can't be fixed easily and I shouldn't have
+to "fix" it since I didn't break it.
+
+-- Please, think of the children before you re-open their parent with a damn chainsaw. --
+
+I only re-open a class after I've tried every other option like
+subclassing, wrapping, etc.  If nothing else works or is too much
+effort for the modification, then I DOCUMENT THE HELL out of my
+modification and try desperately to localize the change so that it
+doesn't hurt anyone else.
+
+Alright, rant off.  Please stop doing this.  My appologies if I hurt
+anyone's feelings.
+
+Zed A. Shaw
+http://www.zedshaw.com/
